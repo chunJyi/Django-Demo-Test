@@ -1,0 +1,83 @@
+{% extends 'base.html'%}
+
+{% block content%}
+<div class="container">
+   
+    <div class="row">
+        <div class="col-2">
+
+        </div>
+        <div class="col-8">
+
+            {%for message in messages%}
+            <p class="alert alert-success mt-3">
+                {{message}}
+            </p>
+            {%endfor%}
+            <div class="card">
+
+                <div class="card-header">
+                    <h2>Create New Customer</h2>
+                </div>
+                <div class="card-body " style="padding:20px 70px 20px 70px;background-color:aliceblue">
+                    <form id="create_form" method="POST" action="createCustomer">
+                        {% csrf_token %}
+
+                        <form class="row g-3">
+                            <div class="row my-1">
+                                <div class="col-6">
+                                    <label for="name">Name</label>
+                                    <input required type="text" placeholder="Enter Customer Name" name="name" class="form-control" />
+                                </div>
+                                <div class="col-6">
+                                    <label for="phNo">Number</label>
+                                    <input required type="text" name="phNo" placeholder="Enter Customer Phone" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-12 my-1">
+                                <label for="address">Address</label>
+                                <input required type="text" name="address" placeholder="Enter Customer Address" class="form-control" />
+                            </div>
+                            <div class="col-12 my-1">
+                                <label for="birthDay">Birthday</label>
+                                <input required type="date" name="birthDay" class="form-control" />
+                            </div>
+
+                            <div class="input-group my-3">
+                                <label class="input-group-text" for="inputGroupSelect01">Gender</label>
+                                <select name="gender" required  class="form-select" id="inputGroupSelect01">
+                                    {% for g in gender%}
+                                    <option value="{{g}}">{{g}}</option>
+                                    {% endfor%}
+                                </select>
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <label class="input-group-text" for="inputGroupSelect01">Item</label>
+                                <select name="item"  required class="form-select" id="inputGroupSelect01">
+                                    {% for item in items%}
+                                    <option value="{{item}}">{{item}}</option>
+
+                                    {% endfor%}
+                                </select>
+                            </div> 
+
+                            <div class="col-12 mt-3">
+                                <button type="submit" class="btn btn-outline-success">Add Customer Info</button>
+                            </div>
+                        </form>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div>
+
+        </div class="col-2">
+    </div>
+
+
+
+
+
+</div>
+{% endblock content%}

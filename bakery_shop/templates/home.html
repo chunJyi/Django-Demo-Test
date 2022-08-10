@@ -1,0 +1,57 @@
+{% extends 'base.html'%}
+
+{% block content%}
+
+
+
+<div class="container my-5">
+    <div class="row">
+    </div>
+    <div class="card mt-5">
+
+        <div class="card-header">
+            <h1>Customer Lists</h1>
+
+        </div>
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
+
+
+                <table class="table" >
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Name</th>
+                            <th>Contact number</th>
+                            <th>Item</th>
+                            <th>Address</th>
+                            <th>Gender</th>
+                            <th>Birthdate</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for customer in customers %}
+                        <tr>
+                            <td>{{forloop.counter}}</td>
+
+                            <td>{{customer.name}}</td>
+                            <td>{{customer.phNo}}</td>
+                            <td ><button disabled class="btn btn-primary" style="border-radius: 10px !important;padding:1px 20px 1px 20px">{{customer.item}}</button></td>
+                            <td>{{customer.address}}</td>
+                            <td>{{customer.gender}}</td>
+                            <td>{{customer.birthDay}}</td>
+
+                        </tr>
+                        {%endfor%}
+                    </tbody>
+                </table>
+
+
+                <p><a href="/create" class="btn btn-outline-success p-2">Create New</a></p>
+            </blockquote>
+        </div>
+
+    </div>
+</div>
+
+{% endblock content%}
